@@ -1,8 +1,7 @@
-import { Modal, View, Text, StyleSheet } from 'react-native'
-
+import { Modal, View, Text, StyleSheet, Button } from 'react-native'
 
 export default function CustomModal(params) {
-  const { modalVisible, itemSelected, onHandlerDeleteItem } = params;
+  const { modalVisible, itemSelected, onHandlerDeleteItem, onHandlerCompleteItem } = params;
   return (
     <Modal
       animationType='slide'
@@ -22,6 +21,7 @@ export default function CustomModal(params) {
           </View>
           <View style={styles.modalButton}>
             <Button onPress={() => onHandlerDeleteItem(itemSelected.id)} title='Confirmar' />
+            <Button onPress={() => onHandlerCompleteItem(itemSelected.id)} title='Completar' />
           </View>
         </View>
       </View>
