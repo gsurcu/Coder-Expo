@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View, TextInput, Button, FlatList, TouchableOpacity, Modal } from 'react-native';
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import CustomModal from './components/Modal';
 
 export default function App() {
 
@@ -10,7 +11,9 @@ export default function App() {
 
   const onHandlerCahngeItem = (text) => {setTextItem(text)}
   const onHandlerAddItem = () => {
-    setItemList(currenItems => [...currenItems, { id: Math.random(), value: textItem}])
+    console.log('Se agrego el item', textItem)
+    setItemList(currenItems => [...currenItems, { id: Date.now(), value: textItem }] )
+    // setItemList(currenItems => [...currenItems, { id: Math.random(), value: textItem}])
     setTextItem('')
   }
 
@@ -23,15 +26,16 @@ export default function App() {
     setItemSelected(itemList.find(item => item.id === id))
     setModalVisible(!modalVisible)
   }
+    useEffect(() => {
+      console.table(itemList)
+    }, [itemList])
   return (
     <View style={styles.screen}>
-      <Modal>
-        <View></View>
-        <View></View>
-        <View></View>
-        <View></View>
-      </Modal>
-
+      <CustomModal 
+        modalVisible={modalVisible}
+        itemSelected={itemSelected}
+        onHandlerDeleteItem={onHandlerDeleteItem}
+      />
       <View style={styles.container}>
         <TextInput 
           placeholder='Escribe aqui' 
@@ -40,13 +44,12 @@ export default function App() {
           onChangeText={onHandlerCahngeItem}
         />
         <Button title='Add' style={styles.button} onPress={onHandlerAddItem} disabled={textItem.length < 1? true : false} />
-        {itemList.map(item => <View key={item.id}> <Text>{item.value}</Text> <Text>{item.id}</Text> </View>)}
+        {/* {itemList.map(item => <View key={item.id}> <Text>{item.value}</Text> <Text>{item.id}</Text> </View>)} */}
       </View>
-      {/* <Text>{textItem}</Text> */}
       <FlatList
         data={itemList}
         renderItem={data => {
-          <TouchableOpacity onPress={() => {}} style={styles.item} >
+          <TouchableOpacity onPress={() => onHandlerModal(data.item.id)} style={styles.item} >
             <Text>{data.item.value}</Text>
           </TouchableOpacity>
         }}
@@ -58,6 +61,10 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
+  screen: {
+    marginTop: '10%',
+    padding: 30,
+  },
   container: {
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -69,10 +76,6 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     borderWidth: 1,
   },
-  screen: {
-    marginTop: '10%',
-    padding: 30,
-  },
   button: {},
   item: {
     flexDirection: 'row',
@@ -81,14 +84,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'black',
     borderRadius: 10,
-    height: 50,
     marginTop: '10%',
+    height: 50,
   },
-  modal: {
-    width: '90%'
-  },
-  modalTitle: {},
-  modalMessage: {},
-  modalButton: {},
-  modalItem: {}
 });
