@@ -12,8 +12,6 @@ export default function CustomModal(params) {
         <View style={styles.modalView}>
           <View style={styles.modal}>
             <Text>Mi modal</Text>
-          </View>
-          <View style={styles.modal}>
             <Text>Estas seguro que desea borrar?</Text>
           </View>
           <View style={styles.modalMessage}>
@@ -34,14 +32,15 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.5)'
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    padding: '5%'
   },
   modalView: {
     backgroundColor: 'white',
     width: '80%',
     height: '50%',
     borderRadius: 10,
-    padding: '10%',
+    padding: '5%',
     justifyContent: 'space-between',
     alignItems: 'center',
     flexDirection: 'column'
