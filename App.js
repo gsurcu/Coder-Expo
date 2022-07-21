@@ -3,6 +3,8 @@ import { useState } from 'react'
 import CustomModal from './components/Modal';
 import AddItem from './components/AddItem';
 import List from './components/List';
+import Header from './components/Header';
+import StartGameScreen from './pages/StartGameScreen';
 
 export default function App() {
 
@@ -43,6 +45,8 @@ export default function App() {
         onHandlerDeleteItem={onHandlerDeleteItem}
         onHandlerCompleteItem={onHandlerCompleteItem}
       />
+      <Header title={'Hola'} />
+      <StartGameScreen />
       <AddItem
         textItem={textItem}
         onHandlerChangeItem={onHandlerChangeItem}
