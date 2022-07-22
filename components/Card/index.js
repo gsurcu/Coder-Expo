@@ -1,9 +1,9 @@
 import { View, StyleSheet } from 'react-native'
 
-export default function Card(props) {
+const Card = params => {
   return (
-    <View style={{...styles.card, ...props.style}} >
-      {props.children}
+    <View style={{...styles.card, ...params.style}} >
+      {params.children}
     </View>
   )
 }
@@ -13,3 +13,5 @@ const styles = StyleSheet.create({
     shadowColor: 'black',
   }
 })
+
+export default Card;

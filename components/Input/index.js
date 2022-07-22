@@ -1,14 +1,18 @@
-import { View, StyleSheet } from 'react-native'
+import { TextInput, StyleSheet } from 'react-native'
 
-export default function Input(props) {
+const Input = params => {
   return (
-    <View style={styles.input}>
-    </View>
+    <TextInput {...params} style={{...styles.input, ...params.style}} />
   )
 }
 
 const styles = StyleSheet.create({
   input: {
-    shadowColor: 'black',
+    height: 10,
+    borderBottomColor: 'grey',
+    borderBottomWidth: 1,
+    marginVertical: 10,
   }
 })
+
+export default Input

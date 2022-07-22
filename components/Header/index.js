@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet }  from 'react-native'
+import Colors from '../../constants/colors';
 
-export default function Header(params) {
+const Header = params => {
   const { title } = params;
 
   return (
@@ -15,10 +16,12 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 90,
     paddingTop: 36,
-    backgroundColor: '#f7287b'
+    backgroundColor: Colors.primary
   },
   headerTitle: {
     color: 'black',
     fontSize: 22
   }
 })
+
+export default Header;
