@@ -1,11 +1,13 @@
 import { View, Button, Text, StyleSheet } from 'react-native'
 
-const CategoryBreadScreen = ({navigation}) => {
+const CategoryBreadScreen = ({route}) => {
+
+  const { category } = route.params
   return (
     <View style={styles.container} >
-      <Text>Products of the category</Text>
+      <Text>{category}</Text>
       <Button title='Go to Detail' onPress={() => {
-        navigation.navigate('Detail')
+        route.navigate('Detail', { product: 'Product'})
       }} />
     </View>
   )

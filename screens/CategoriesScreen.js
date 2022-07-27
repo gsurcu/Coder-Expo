@@ -5,7 +5,7 @@ const CategoriesScreen = ({navigation}) => {
     <View style={styles.container} >
       <Text>Categories</Text>
       <Button title='Go to Products' onPress={() => {
-        navigation.navigate('Bread')
+        navigation.navigate('Bread', { category: 'Category' })
       }} />
     </View>
   )

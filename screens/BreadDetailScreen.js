@@ -1,9 +1,11 @@
 import { View, Button, Text, StyleSheet } from 'react-native'
 
-const BreadDetailScreen = ({navigation}) => {
+const BreadDetailScreen = ({route}) => {
+
+  const { product } = route.params
   return (
     <View style={styles.container} >
-      <Text>Product's Detail</Text>
+      <Text>{product}</Text>
     </View>
   )
 }
