@@ -1,32 +1,19 @@
-import { StyleSheet, View } from 'react-native';
-import { useState } from 'react'
-import Header from './components/Header';
-import StartGameScreen from './screens/StartGameScreen';
-import GameScreen from './screens/GameScreen';
+import React from 'react';
+import { StyleSheet, View } from 'react-native-web';
 import { useFonts } from 'expo-font';
+import ShopNavigator from './navigation/ShopNavigator';
 import AppLoading from 'expo-app-loading';
 
 export default function App() {
-  const [loaded] = useFonts({EducBold: require('./assets/fonts/Edu-Bold.ttf'), EducRegular: require('./assets/fonts/Edu-Regular.ttf'), EducMedium: require('./assets/fonts/Edu-Medium.ttf'), EducSemiBold: require('./assets/fonts/Edu-SemiBold.ttf')})
-  const [ userNumber, setUserNumber ] = useState();
-
-  const handlerStartGame = selectedNumber => {
-    setUserNumber(selectedNumber)
-  }
-
-  let content = <StartGameScreen onStartGame={handlerStartGame} />
-  
-  if (userNumber) {
-    content = <GameScreen userOption={userNumber} />
-  }
+  const [loaded] = useFonts({
+    OpenSansBold: require('./assets/fonts/OpenSans-Bold.ttf'), 
+    OpenSans: require('./assets/fonts/OpenSans-Regular.ttf'), 
+  })
 
   if(!loaded) return <AppLoading />
 
   return (
-    <View style={styles.container}>
-      <Header title={'Adivina el numero'} />
-      {content}
-    </View>
+    <ShopNavigator />
   );
 }
 
