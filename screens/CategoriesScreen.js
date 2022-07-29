@@ -1,12 +1,24 @@
-import { View, Button, Text, StyleSheet } from 'react-native'
+import React from 'react'
+import { View, Text, StyleSheet } from 'react-native'
+import List from '../components/List'
+import { generateCategories, generateProducts } from '../utils/generateItems'
 
 const CategoriesScreen = ({navigation}) => {
+  const categories = generateCategories(6)
+  const products = generateProducts(categories, 5);
   return (
     <View style={styles.container} >
-      <Text>Categories</Text>
-      <Button title='Go to Products' onPress={() => {
-        navigation.navigate('Bread', { category: 'Category' })
-      }} />
+
+      <View style={styles.title}>
+        <Text>Categories</Text>
+      </View>
+
+      <List
+        itemList={categories}
+        navigation={navigation}
+        routeName='Bread'
+        routeProps={{products:products}}
+      />
     </View>
   )
 }
@@ -16,7 +28,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+  },
+  title: {
+    alignItems: "center",
+    padding: 10
   }
 })
 

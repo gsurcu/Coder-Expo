@@ -1,14 +1,22 @@
-import { View, Button, Text, StyleSheet } from 'react-native'
+import React from 'react'
+import { View, Text, StyleSheet } from 'react-native'
+import List from '../components/List'
 
-const CategoryBreadScreen = ({route}) => {
-
-  const { category } = route.params
+const CategoryBreadScreen = ({navigation , route}) => {
+  const { title: category, products } = route.params
+  const categoryProducts = products.filter(e => e.category === category);
   return (
     <View style={styles.container} >
-      <Text>{category}</Text>
-      <Button title='Go to Detail' onPress={() => {
-        route.navigate('Detail', { product: 'Product'})
-      }} />
+
+      <View style={styles.title}>
+        <Text>{category}</Text>
+      </View>
+        
+      <List
+        itemList={categoryProducts}
+        navigation={navigation}
+        routeName='Detail'
+      />
     </View>
   )
 }
@@ -18,7 +26,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center'
+  },
+  title: {
+    alignItems: "center",
+    padding: 10
   }
 })
 

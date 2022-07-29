@@ -1,8 +1,9 @@
+import React from 'react'
 import { View, Button, Text, StyleSheet } from 'react-native'
 
 const BreadDetailScreen = ({route}) => {
 
-  const { product } = route.params
+  const { title:product } = route.params
   return (
     <View style={styles.container} >
       <Text>{product}</Text>

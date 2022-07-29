@@ -20,9 +20,9 @@ const ShopNavigator = () => (
         fontWeight: 'bold'
       }
     }}>
-      <Stack.Screen name="Home" component={CategoriesScreen} options={{headerShown: false}} />
-      <Stack.Screen name="Bread" component={CategoryBreadScreen} options={({route}) => ({headerTitle: route.params.category})} />
-      <Stack.Screen name="Detail" component={BreadDetailScreen} options={({route}) => ({headerTitle: route.params.product})} />
+      <Stack.Screen name="Home" component={CategoriesScreen} options={{headerShown: true}} />
+      <Stack.Screen name="Bread" component={CategoryBreadScreen} options={({route}) => ({headerTitle: route.params.title})} />
+      <Stack.Screen name="Detail" component={BreadDetailScreen} options={({route}) => ({headerTitle: route.params.title})} />
     </Stack.Navigator>
   </NavigationContainer>
 )
