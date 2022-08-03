@@ -1,36 +1,30 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
-import List from '../components/List'
+import { FlatList } from 'react-native'
+import BreadItem from '../components/BreadItem'
+import { BREADS } from '../data/breads'
 
-const CategoryBreadScreen = ({navigation , route}) => {
-  const { title: category, products } = route.params
-  const categoryProducts = products.filter(e => e.category === category);
+const CategoryBreadScreen = ({ navigation , route }) => {
+  const { categoryID } = route.params
+  const breads = BREADS.filter(prod => prod.category === categoryID);
+
+  const handleSelected = item => {
+    navigation.navigate('Detail', {
+      productID: item.id,
+      name: item.name,
+    })
+  }
+
+  const renderItemBread = ({item}) => (
+    <BreadItem item={item} onSelected={handleSelected} />
+  )
+
   return (
-    <View style={styles.container} >
-
-      <View style={styles.title}>
-        <Text>{category}</Text>
-      </View>
-        
-      <List
-        itemList={categoryProducts}
-        navigation={navigation}
-        routeName='Detail'
-      />
-    </View>
+    <FlatList 
+      data={breads}
+      keyExtractor={item => item.id}
+      renderItem={renderItemBread}
+    />
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-  },
-  title: {
-    alignItems: "center",
-    padding: 10
-  }
-})
 
 export default CategoryBreadScreen;

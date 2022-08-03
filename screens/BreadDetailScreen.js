@@ -1,12 +1,16 @@
 import React from 'react'
-import { View, Button, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
+import { BREADS } from '../data/breads'
 
 const BreadDetailScreen = ({route}) => {
-
-  const { title:product } = route.params
+  const { productID } = route.params
+  const bread = BREADS.find(prod => prod.id === productID)
   return (
     <View style={styles.container} >
-      <Text>{product}</Text>
+      <Text style={styles.title}>{bread.name}</Text>
+      <Text>{bread.description}</Text>
+      <Text>{bread.price}</Text>
+      <Text>{bread.weight}</Text>
     </View>
   )
 }
@@ -16,7 +20,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    paddingHorizontal: 6,
+  },
+  title : {
+    fontSize: 20,
+    fontFamily: 'OpenSansBold',
+    marginBottom: 10,
   }
 })
 

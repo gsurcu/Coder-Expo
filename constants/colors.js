@@ -1,4 +1,4 @@
-export default {
-  primary: '#f7287b',
-  accent: '#c717fc'
+export const COLORS = {
+  primary: '#2d93ad',
+  accent: '#aac0af'
 }

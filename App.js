@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native-web';
 import { useFonts } from 'expo-font';
-import ShopNavigator from './navigation/ShopNavigator';
+import MainNavigator from './navigation';
 import AppLoading from 'expo-app-loading';
 
 export default function App() {
@@ -13,7 +13,7 @@ export default function App() {
   if(!loaded) return <AppLoading />
 
   return (
-    <ShopNavigator />
+    <MainNavigator />
   );
 }
 
