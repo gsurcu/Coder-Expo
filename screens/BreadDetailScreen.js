@@ -1,10 +1,12 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
-import { BREADS } from '../data/breads'
+// redux
+import { useSelector } from 'react-redux'
 
-const BreadDetailScreen = ({route}) => {
-  const { productID } = route.params
-  const bread = BREADS.find(prod => prod.id === productID)
+const BreadDetailScreen = () => {
+
+  const bread = useSelector(state => state.breads.selected)
+
   return (
     <View style={styles.container} >
       <Text style={styles.title}>{bread.name}</Text>

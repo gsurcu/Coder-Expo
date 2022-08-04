@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, FlatList, TouchableOpacity, StyleSheet } from "react-native";
-import CartItem from "../../components/CartItem";
-import cart from "../../data/cart";
+import CartItem from "../components/CartItem";
+import cart from "../data/cart";
 
 const CartScreen = () => {
   const items = cart;
