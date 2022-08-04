@@ -1,8 +1,9 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native-web';
 import { useFonts } from 'expo-font';
-import MainNavigator from './navigation';
 import AppLoading from 'expo-app-loading';
+import MainNavigator from './navigation';
+import { Provider } from 'react-redux';
+import store from './store';
 
 export default function App() {
   const [loaded] = useFonts({
@@ -13,12 +14,8 @@ export default function App() {
   if(!loaded) return <AppLoading />
 
   return (
-    <MainNavigator />
+    <Provider store={store}>
+      <MainNavigator />
+    </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
