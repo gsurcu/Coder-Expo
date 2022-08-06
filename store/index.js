@@ -1,12 +1,17 @@
-import { legacy_createStore as createStore, combineReducers } from "redux";
+import { legacy_createStore as createStore, combineReducers, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
 
 //reducers
 import CategoryReducer from "./reducers/category.reducer";
 import BreadsReducer from "./reducers/breads.reducer";
+import CartReducer from "./reducers/cart.reducer";
+import OrderReducer from "./reducers/order.reducer";
 
 const RootReducer = combineReducers({
   categories: CategoryReducer,
-  breads: BreadsReducer
+  breads: BreadsReducer,
+  cart: CartReducer,
+  order: OrderReducer,
 })
 
-export default createStore(RootReducer)
+export default createStore(RootReducer, applyMiddleware(thunk))

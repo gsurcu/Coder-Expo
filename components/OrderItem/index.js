@@ -1,5 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { Ionicons } from "@expo/vector-icons" 
+import { COLORS } from "../../constants/colors"
 
 const formatDay = time => {
   const date = new Date(time);
@@ -14,12 +16,14 @@ const OrderItem = ({ item, onDelete}) => {
         <Text style={styles.total}>${item.total}</Text>
       </View>
       <View style={styles.actions}>
-        <TouchableOpacity onPress={() => onDelete(item.id)}></TouchableOpacity>
+        <TouchableOpacity onPress={() => onDelete(item.id)}>
+          <Ionicons name="md-trash" color={COLORS.primary} size={22} />
+        </TouchableOpacity>
       </View>
     </View>
   )
+  
 }
-
 const styles = StyleSheet.create({
   order: {
     flexDirection: "row",
@@ -36,7 +40,7 @@ const styles = StyleSheet.create({
   },
   total: {
     fontSize: 18,
-    fontFamily: "OpenSans-Bold"
+    fontFamily: "OpenSansBold"
   }
 })
 

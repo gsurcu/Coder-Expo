@@ -5,6 +5,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 import ShopNavigator from "../shop";
 import CartNavigator from "../cart"
+import OrderNavigator from "../order";
 
 const BottomTabs = createBottomTabNavigator();
 
@@ -40,6 +41,18 @@ const TabNavigator = () => (
           </View>
         )
       }} 
+    />
+    <BottomTabs.Screen 
+      name="OrderTab"
+      component={OrderNavigator}
+      options={{
+        tabBarIcon: ({focused}) => (
+          <View style={styles.item}>
+            <Ionicons name="cash-outline" size={24} color="black" />
+            <Text>Orders </Text>
+          </View>
+        )
+      }}
     />
   </BottomTabs.Navigator>
 )

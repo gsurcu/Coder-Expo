@@ -4,9 +4,9 @@ import { BREADS } from '../../data/breads'
 import { SELECT_BREAD, FILTERED_BREAD } from '../actions/bread.action'
 
 const initialState = {
-  breads: BREADS,
+  list: BREADS,
   filteredBread: [],
-  selected: null
+  selectedID: null
 }
 
 const BreadsReducer = (state = initialState, action) => {
@@ -14,12 +14,12 @@ const BreadsReducer = (state = initialState, action) => {
     case SELECT_BREAD:
       return {
         ...state,
-        selected: state.breads.find(bread => bread.id === action.breadID)
+        selectedID: state.list.find(bread => bread.id === action.breadID).id
       };
     case FILTERED_BREAD:
       return {
         ...state,
-        filteredBread: state.breads.filter(bread => bread.category === action.categoryID)
+        filteredBread: state.list.filter(bread => bread.category === action.categoryID)
       };
     default:
       return state;

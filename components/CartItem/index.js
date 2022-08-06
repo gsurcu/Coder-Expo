@@ -27,10 +27,25 @@ const CartItem = ({ item, onDelete }) => {
 const styles = StyleSheet.create({
   item: {
     flex: 1,
+    padding: 8,
+    borderBottomWidth: 1,
+    borderBottomColor: "#ccc",
   },
-  header: {},
-  detail: {},
-  text: {}
+  header: {
+    fontSize: 18,
+    fontFamily: "OpenSansBold",
+  },
+  detail: {
+    flex: 1,
+    flexDirection: "row",
+    flexWrap: "wrap",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  text: {
+    fontSize: 16,
+    fontFamily: "OpenSans"
+  }
 })
 
 export default CartItem
