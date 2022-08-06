@@ -49,7 +49,7 @@ const TabNavigator = () => (
         tabBarIcon: ({focused}) => (
           <View style={styles.item}>
             <Ionicons name="cash-outline" size={24} color="black" />
-            <Text>Orders </Text>
+            <Text>Orders</Text>
           </View>
         )
       }}

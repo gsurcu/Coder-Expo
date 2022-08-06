@@ -1,11 +1,11 @@
 import React from 'react'
-import { View, Text, StyleSheet, Button, TouchableOpacity } from 'react-native'
-import { Ionicons } from "@expo/vector-icons"
+import { View, Text, StyleSheet, Button} from 'react-native'
+import ShowCart from '../components/ShowCart'
+
 // redux
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch, connect } from 'react-redux'
 // actions
 import { addItem } from '../store/actions/cart.action'
-import { COLORS } from '../constants/colors'
 
 const BreadDetailScreen = ({navigation}) => {
   const dispatch = useDispatch();
@@ -17,16 +17,21 @@ const BreadDetailScreen = ({navigation}) => {
 
   return (
     <View style={styles.container} >
-      <Text style={styles.title}>{bread.name}</Text>
-      <Text>{bread.description}</Text>
-      <Text>{bread.price}</Text>
-      <Text>{bread.weight}</Text>
-      <View style={styles.buttons}>
-        <Button title='Agregar al Carrito' onPress={handlerAddItemCart} />
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Cart')}>
-          <Ionicons name="cart" size={24} color="white" />
-        </TouchableOpacity>
+      <View style={styles.item}>
+        <View>
+          <Text style={styles.title}>{bread.name}</Text>
+        </View>
+        <View>
+          <Text style={styles.description}>{bread.description}</Text>
+        </View>
+        <View>
+          <Text style={styles.price}>{bread.price}</Text>
+        </View>
+        <View style={styles.cart}>
+          <Button title='Agregar al Carrito' onPress={handlerAddItemCart} />
+        </View>
       </View>
+      <ShowCart navigation={navigation} />
     </View>
   );
 }
@@ -35,28 +40,22 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20,
+    padding: 12,
+    paddingBottom: 120
+  },
+  item: {
+    flex: 1,
   },
   title : {
     fontSize: 20,
     fontFamily: 'OpenSansBold',
     marginBottom: 10,
   },
-  buttons: {
-    // flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+  description: {},
+  price: {},
+  cart: {
     alignItems: 'center',
-    width: '100%'
-
-  },
-  button: {
-    backgroundColor: COLORS.primary,
-    padding: 5,
-    borderRadius: 6,
   },
 })
 
-export default BreadDetailScreen;
+export default connect()(BreadDetailScreen);

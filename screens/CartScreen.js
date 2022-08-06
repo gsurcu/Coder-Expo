@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, FlatList, TouchableOpacity, StyleSheet } from "react-native";
 import CartItem from "../components/CartItem";
 // redux
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch, connect } from "react-redux";
 // actions
 import { confirmCart, removeItem } from "../store/actions/cart.action";
 
@@ -27,7 +27,10 @@ const CartScreen = () => {
         />
       </View>
       <View style={styles.footer}>
-        <TouchableOpacity style={styles.confirm} onPress={handlerConfirmCart}>
+        <TouchableOpacity 
+          style={styles.confirm} 
+          onPress={total === 0? () => {}: handlerConfirmCart}
+        >
           <Text>Confirmar</Text>
           <View style={styles.total}>
             <Text style={styles.text}>Total</Text>
@@ -72,4 +75,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default CartScreen;
+export default connect()(CartScreen);

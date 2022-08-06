@@ -3,7 +3,7 @@ import { FlatList } from 'react-native'
 import BreadItem from '../components/BreadItem'
 
 // redux
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch, connect } from 'react-redux'
 // actions
 import { filteredBread, selectBread } from '../store/actions/bread.action'
 
@@ -15,7 +15,7 @@ const CategoryBreadScreen = ({ navigation }) => {
   const category = useSelector(store => store.categories.selected)
 
   useEffect(() => {
-    dispatch(filteredBread(category.id))
+    dispatch(filteredBread(category.id));
   }, [])
   
   const handleSelected = item => {
@@ -36,4 +36,4 @@ const CategoryBreadScreen = ({ navigation }) => {
   )
 }
 
-export default CategoryBreadScreen;
+export default connect()(CategoryBreadScreen);

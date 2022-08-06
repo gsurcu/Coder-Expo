@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { View, FlatList, StyleSheet } from "react-native";
 import OrderItem from "../components/OrderItem"
 // redux
-import { useDispatch, useSelector} from "react-redux"
+import { useDispatch, useSelector, connect} from "react-redux"
 // actions
 import { deleteOrder, getOrders } from "../store/actions/order.action";
 
@@ -11,7 +11,7 @@ const OrderScreen = () => {
   const orders = useSelector(store => store.order.list);
 
   useEffect(() => {
-    dispatch(getOrders())
+    dispatch(getOrders()); console.log(orders, ': useEffect_order');
   }, [])
   const onHandlerDeleteItem = id => dispatch(deleteOrder(id))
 
@@ -30,12 +30,4 @@ const OrderScreen = () => {
   )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    padding: 10,
-  }
-})
-
-export default OrderScreen;
+export default connect()(OrderScreen);
