@@ -1,4 +1,4 @@
-import { URL } from "../../config";
+import { URL } from "../../conf";
 
 export const ADD_ITEM = "ADD_ITEM";
 export const REMOVE_ITEM = "REMOVE_ITEM";

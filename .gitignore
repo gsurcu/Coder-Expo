@@ -13,3 +13,4 @@ extra/
 *.env
 # macOS
 .DS_Store
+conf/

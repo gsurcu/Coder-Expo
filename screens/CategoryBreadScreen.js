@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { FlatList } from 'react-native'
+import { FlatList, StyleSheet, View } from 'react-native'
 import BreadItem from '../components/BreadItem'
 
 // redux
@@ -28,12 +28,23 @@ const CategoryBreadScreen = ({ navigation }) => {
   const renderItemBread = ({item}) => (<BreadItem item={item} onSelected={handleSelected} />)
 
   return (
-    <FlatList 
-      data={categoryBreads}
-      keyExtractor={item => item.id}
-      renderItem={renderItemBread}
-    />
+    <View style={styles.container}>
+      <FlatList 
+        data={categoryBreads}
+        keyExtractor={item => item.id}
+        renderItem={renderItemBread}
+      />
+    </View>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 12,
+    paddingBottom: 120,
+    backgroundColor: 'white'
+  },
+})
 
 export default connect()(CategoryBreadScreen);

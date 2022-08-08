@@ -4,11 +4,11 @@ import { COLORS } from "../../constants/colors";
 import { Ionicons } from "@expo/vector-icons"
 
 const ShowCart = ({navigation}) => {
-  const handlerShowCart = () => navigation.push('Cart')// No me funciona, F
+  const handlerShowCart = () => navigation.navigate('Cart')// No me funciona, F
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.button} onPress={() => handlerShowCart}>
+      <TouchableOpacity style={styles.button} onPress={handlerShowCart}>
         <Ionicons name="cart" size={24} color="white" />
         <Text style={{color: 'white'}}>Ver Carrito</Text>
       </TouchableOpacity>
