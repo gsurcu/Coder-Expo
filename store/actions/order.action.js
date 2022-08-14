@@ -1,4 +1,4 @@
-import { URL } from "../../conf";
+import { URL_API } from "../../conf";
 
 export const GET_ORDERS = 'GET_ORDERS';
 export const DELETE_ORDER = 'DELETE_ORDER'
@@ -6,7 +6,7 @@ export const DELETE_ORDER = 'DELETE_ORDER'
 export const getOrders = () => {
   return async dispatch => {
     try {
-      const response = await fetch(`${URL}/ordenes.json`, {
+      const response = await fetch(`${URL_API}/ordenes.json`, {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -30,7 +30,7 @@ export const getOrders = () => {
 export const deleteOrder = id => {
   return async dispatch => {
     try {
-      await fetch(`${URL}/ordenes/${id}.json`, {
+      await fetch(`${URL_API}/ordenes/${id}.json`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

@@ -1,4 +1,4 @@
-import { URL } from "../../conf";
+import { URL_API } from "../../conf";
 
 export const ADD_ITEM = "ADD_ITEM";
 export const REMOVE_ITEM = "REMOVE_ITEM";
@@ -17,7 +17,7 @@ export const removeItem = itemID => ({
 export const confirmCart = (payload, total) => {
   return async dispatch => {
     try {
-      const response = await fetch(`${URL}/ordenes.json`, {
+      const response = await fetch(`${URL_API}ordenes.json`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
