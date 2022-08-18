@@ -1,8 +1,9 @@
-import React, { useCallback, useEffect, useReducer, useState } from "react";
+import React, { useCallback, useReducer } from "react";
 import { View, Text, KeyboardAvoidingView, TouchableOpacity, StyleSheet, TextInput, Alert, Platform, Button } from "react-native";
 import { COLORS } from "../constants/colors";
 import { signup } from "../store/actions/auth.action";
 import { useDispatch, connect } from "react-redux";
+import Input from "../components/Input";
 
 const FORM_INPUT_UPDATE = 'FORM_INPUT_UPDATE'
 
@@ -10,7 +11,7 @@ export const formReducer = (state, action) => {
   if (action.type === FORM_INPUT_UPDATE) {
     const inputValues = {
       ...state.inputValues,
-      [action.input]: action.isValid,
+      [action.input]: action.value,
     }
 
     const inputValidities = {
@@ -34,9 +35,6 @@ export const formReducer = (state, action) => {
 }
 
 const AuthScreen = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  
   const dispatch = useDispatch();
   const [formState, formDispatch] = useReducer(formReducer, {
     inputValues: {
@@ -57,8 +55,9 @@ const AuthScreen = () => {
 
   const handleSignUp = () => {
     if (formState.formIsValid) {
-      dispatch(signup(email, password))
+      dispatch(signup(formState.inputValues.email, formState.inputValues.password))
     } else {
+      console.log(formState)
       Alert.alert(
         'Formulario invalido',
         'Ingrese email y usuario valido',
@@ -84,24 +83,32 @@ const AuthScreen = () => {
       <View style={styles.container}>
         <Text style={styles.title}>{title}</Text>
         <View style={styles.inputContainer}>
-
-          <Text style={styles.label}>Email</Text>
-          <TextInput 
-            style={styles.input}
+          <Input 
+            id='email'
+            label='Email'
             keyboardType="email-address"
+            required
+            email
             autoCapitalize="none"
-            onChangeText={(text) => setEmail(text)}
+            errorMessage='Por favor ingrese un email valido'
+            onInputChange={onInputChangeHandler}
+            initialValue=''
           />
-          <Text style={styles.label}>Clave</Text>
-          <TextInput 
-            style={styles.input}
+          <Input 
+            id='password'
+            label='Clave'
+            keyboardType='default'
             secureTextEntry
+            required
+            minLength={6}
             autoCapitalize="none"
-            onChangeText={(text) => setPassword(text)}
+            errorMessage='Por favor ingrese un password'
+            onInputChange={onInputChangeHandler}
+            initialValue=''
           />
-          <Button title='Registrarme' onPress={handleSignUp} />
         </View>
         <View style={styles.prompt}>
+          <Button title='Registrarme' onPress={handleSignUp} />
           <Text style={styles.promptMessage}>{message}</Text>
           <TouchableOpacity onPress={() => console.log(messageTarget)}>
             <Text style={styles.promptButton}>{messageAction}</Text>
@@ -154,7 +161,6 @@ const styles = StyleSheet.create({
   inputContainer: {
     justifyContent: "space-around",
     height: "40%",
-    // backgroundColor: "white",
   },
   input: {
     width: "100%",

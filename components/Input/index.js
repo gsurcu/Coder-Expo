@@ -32,7 +32,8 @@ const Input = props => {
 
   useEffect(() => {
     if (inputState.touched) {
-      onInputChange(inputState.value, inputState.isValid)
+      console.log(inputState)
+      onInputChange(id, inputState.value, inputState.isValid)
     }
   }, [inputState, onInputChange])
   const textChangeHandler = text => {
@@ -65,7 +66,7 @@ const Input = props => {
         onBlur={onBlurHandler}
       />
       {!inputState.isValid && inputState.touched && (<View style={styles.errorContainer}>
-        <Text style={styles.error}>{props.errorText}</Text>
+        <Text style={styles.error}>{props.errorMessage}</Text>
       </View> )}
     </View>
   )
@@ -88,3 +89,5 @@ const styles = StyleSheet.create({
   errorContainer: {},
   error: {},
 })
+
+export default Input;
