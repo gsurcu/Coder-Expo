@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Button, Image, Text, Alert, StyleSheet } from "react-native";
 import * as ImagePicker from 'expo-image-picker'
-import * as Permissions from 'expo-permissions'
+// import * as Permissions from 'expo-permissions'
 import { COLORS } from "../../constants/colors";
 
 const ImageSelector = props => {
@@ -19,7 +19,7 @@ const ImageSelector = props => {
       return false
     }
 
-    return false
+    return true
   }
 
   const handlerTakeImage = async () => {
@@ -30,20 +30,20 @@ const ImageSelector = props => {
       allowsEditing: true,
       aspect: [16,9],
       quality: 0.8
-    })
+    });
 
     setPickedUrl(image.uri);
     props.onImage(image.uri);
   }
 
   return (
-    <View>
-      <View>
+    <View style={styles.container}>
+      <View style={styles.preview}>
         {!pickedUrl ? (
           <Text>No hay imagen seleccionada...</Text>
         ) : (
           <Image  
-            style={styles}
+            style={styles.image}
             source={{uri: pickedUrl}}
           />
         )}

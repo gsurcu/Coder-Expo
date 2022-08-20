@@ -8,18 +8,19 @@ import { addPlace } from "../store/actions/places.action";
 const NewPlaceScreen = ({navigation}) => {
   const dispatch = useDispatch()
   const [title, setTitle] = useState('')
+  const [image, setImage] = useState('')
 
   const onHandlerTitle = text => setTitle(text)
 
   const onHandlerSave = () => {
-    dispatch(addPlace(title))
+    dispatch(addPlace(title, image))
     navigation.navigate('Direcciones')
   }
   return (
     <ScrollView>
       <View style={styles.container}>
         <Text style={styles.label}>Titulo</Text>
-        <ImageSelector onImage={image => console.log(image)} />
+        <ImageSelector onImage={image => setImage(image)} />
         <TextInput 
           style={styles.input}
           onChangeText={onHandlerTitle}

@@ -8,7 +8,7 @@ export const addPlace = (title, image) => {
     const Path = fs.documentDirectory + fileName
 
     try {
-      fs.moveAsync({
+      await fs.moveAsync({
         from: image,
         to: Path
       })
