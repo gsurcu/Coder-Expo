@@ -2,32 +2,35 @@ import React, { useState } from "react";
 import { View, Text, Button, TextInput, ScrollView, StyleSheet } from "react-native";
 import { useDispatch } from "react-redux";
 import ImageSelector from "../components/ImageSelector";
+import LocationSelector from "../components/LocationSelector";
 import { COLORS } from "../constants/colors";
 import { addPlace } from "../store/actions/places.action";
 
-const NewPlaceScreen = ({navigation}) => {
+const NewPlaceScreen = ({navigation, route}) => {
   const dispatch = useDispatch()
   const [title, setTitle] = useState('')
   const [image, setImage] = useState('')
+  const [location, setLocation] = useState(null)
 
   const onHandlerTitle = text => setTitle(text)
 
   const onHandlerSave = () => {
-    dispatch(addPlace(title, image))
+    dispatch(addPlace(title, image, location))
     navigation.navigate('Direcciones')
   }
   return (
     <ScrollView>
       <View style={styles.container}>
         <Text style={styles.label}>Titulo</Text>
-        <ImageSelector onImage={image => setImage(image)} />
         <TextInput 
           style={styles.input}
           onChangeText={onHandlerTitle}
           value={title}
         />
+        <ImageSelector onImage={image => setImage(image)} />
+        <LocationSelector onLocation={setLocation} mapLocation={route?.params?.mapLocation} />
         <Button 
-          title="GrabarDireccion" 
+          title="Grabar Direccion" 
           color={COLORS.MAROON} 
           onPress={onHandlerSave} 
         />

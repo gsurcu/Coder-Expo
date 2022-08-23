@@ -6,6 +6,8 @@ import { COLORS } from "../../constants/colors";
 
 import PlaceListScreen from "../../screens/PlaceListScreen";
 import NewPlaceScreen from "../../screens/NewPlaceScreen";
+import PlaceDetailScreen from "../../screens/PlaceDetailScreen";
+import MapScreen from "../../screens/MapScreen";
 const PlaceStack = createNativeStackNavigator();
 
 const PlaceNavigator = () => (
@@ -41,6 +43,16 @@ const PlaceNavigator = () => (
       name="Nuevo"
       component={NewPlaceScreen}
       options={{title: 'Nueva direccion'}}
+    />
+    <PlaceStack.Screen 
+      name="Detalle"
+      component={PlaceDetailScreen}
+      options={{title: 'Detalle direccion'}}
+    />
+    <PlaceStack.Screen 
+      name="Map"
+      component={MapScreen}
+      options={{title: 'Mapa'}}
     />
   </PlaceStack.Navigator>
 );
