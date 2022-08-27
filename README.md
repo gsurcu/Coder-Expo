@@ -1,4 +1,4 @@
-# APP STATE
-Consigna: A partir de tu app en desarrollo, crear paso a paso las funcionalidades:
-- Configurar e integrar redux
-- Manejo del estado de la aplicación
+# DEVICE FEATURES - SQLITE
+Consigna: Integrar interfaces del dispositivo y sincronización offline
+- Integrar sqlite para sincronización offline
+- Utilizar interfaces del dispositivo como la cámara

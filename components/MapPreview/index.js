@@ -1,18 +1,12 @@
 import React from "react";
 import { View, Image, StyleSheet } from "react-native";
-// import { API_MAPS_KEY } from "../../conf";
 
 const MapPreview = props => {
-  const mapPreviewUrl = !props.location || ''
-    // ? `https://maps.googleapis.com/maps/api/staticmap?center=${props.location.lat},${props.location.lng}&zoom=13&size=600x300&maptype=roadmap&markers=color:blue%7Clabel:S%7C${props.location.lat},${props.location.lng}&key=${API_MAPS_KEY}`
-    // : ''
+  // const mapPreviewUrl = ''
 
   return (
     <View style={{...styles.mapPreview, ...props.style}}>
-      {props.location ?
-        <Image style={styles.mapImage} source={{uri: mapPreviewUrl}} />
-        : (props.children)
-      }
+      {props.children}
     </View>
   )
 }

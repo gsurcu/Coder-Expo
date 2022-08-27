@@ -28,7 +28,7 @@ const MapScreen = ({navigation}) => {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <TouchableOpacity onPress={() => handleSaveLocation()} hitSlop={{ top: 20, left: 20, right: 20, bottom: 20}}>
+        <TouchableOpacity onPress={handleSaveLocation} hitSlop={{ top: 20, left: 20, right: 20, bottom: 20}}>
           <Ionicons name="md-save-outline" color='black' size={22} />
         </TouchableOpacity>
       )

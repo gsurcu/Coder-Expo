@@ -53,7 +53,7 @@ const LocationSelector = ({onLocation, mapLocation}) => {
   useEffect(() => {
     if (mapLocation) {
       setPickedLocation(mapLocation)
-      onLocation(mapLocation)
+      onLocation(mapLocation);console.log(mapLocation, ' : mapLocation')
     }
   }, [mapLocation])
 

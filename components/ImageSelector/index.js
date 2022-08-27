@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { View, Button, Image, Text, Alert, StyleSheet } from "react-native";
 import * as ImagePicker from 'expo-image-picker'
-// import * as Permissions from 'expo-permissions'
 import { COLORS } from "../../constants/colors";
 
 const ImageSelector = props => {
